@@ -1,0 +1,872 @@
+/* --- Import Modern Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+/* --- Modern Variables --- */
+:root {
+    /* A vibrant gradient for a high-energy feel */
+    --primary-start: #6D28D9; /* Purple */
+    --primary-end: #EC4899;   /* Pink */
+    
+    --light-color: #F9FAFB;
+    --dark-color: #111827;  /* Even deeper dark */
+    --text-color: #374151;
+    --container-width: 1100px;
+    --border-radius: 16px; /* Softer, larger radius */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Basic Setup --- */
+body {
+    background-color: #c2deee;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    /* --- CHANGE HERE --- */
+    background: linear-gradient(180deg, var() 0%, #ffffff 40%);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased; /* Smoother fonts */
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+/* Bolder, more impactful typography */
+h1 { 
+    font-size: clamp(3rem, 5vw, 4.5rem); /* Responsive font size */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+h2 { 
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    text-align: center;
+    margin-bottom: 50px;
+}
+h3 { 
+    font-size: 1.35rem; 
+    font-weight: 600;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 0;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid #E5E7EB;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px); /* "Frosted glass" effect */
+    
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    text-decoration: none;
+    /* --- Gradient Text! --- */
+    background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 35px;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding-bottom: 5px;
+    position: relative; /* For the underline effect */
+}
+
+/* --- Cool underline hover effect --- */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+    transition: width 0.3s ease-out;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav a.active {
+    color: var(--dark-color);
+}
+
+
+/* --- Hero Section --- */
+.hero {
+    background-color: #c2deee;
+    padding: 100px 0;
+    overflow: hidden; /* For any potential effects */
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text {
+    flex: 1; 
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4B5563; /* Softer text color */
+}
+
+.hero-image {
+    flex-basis: 450px; 
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 100px;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary {
+    display: inline-block;
+    /* --- Gradient Button --- */
+    background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+    background-size: 200% auto; /* For the hover transition */
+    color: #fff;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 25px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+}
+
+.btn-primary:hover {
+    background-position: right center; /* Shifts the gradient */
+    transform: translateY(-5px) scale(1.05); /* "Lift" and grow */
+    box-shadow: 0 15px 25px -5px rgba(109, 40, 217, 0.3); /* Colored shadow */
+}
+
+
+/* --- Featured Inventions Section --- */
+.featured-inventions {
+    padding: 100px 0;
+    background-color: #f4f7ee;
+}
+
+.featured-grid {
+    display: grid;
+    /* This forces 4 equal-width columns */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.invention-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden; 
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    height: 350px; /* Give the cards a consistent height */
+}
+
+.invention-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.invention-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* --- NEW CARD HOVER EFFECT --- */
+
+.card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    /* A gradient from solid black to transparent */
+    background: linear-gradient(0deg, rgba(17,24,39,0.95) 0%, rgba(17,24,39,0.85) 40%, rgba(17,24,39,0) 100%);
+    color: #ffffff;
+    padding: 30px 20px;
+    
+    /* This is the trick: 
+      It's pushed down so only the bottom 80px is visible.
+      The text inside is aligned to the bottom.
+    */
+    transform: translateY(calc(100% - 80px));
+    transition: transform 0.4s ease-out;
+}
+
+.card-info h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    font-size: 0.9rem;
+    color: #f9f9f9;
+    /* Hidden by default, will fade in */
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s; /* Fades in 0.1s *after* slide starts */
+}
+
+/* --- On hover, slide the info box up to the top --- */
+.invention-card:hover .card-info {
+    transform: translateY(0);
+}
+
+/* --- On hover, fade in the paragraph text --- */
+.invention-card:hover .card-info p {
+    opacity: 1;
+}
+
+/* --- On hover, zoom the image slightly --- */
+.invention-card:hover img {
+    transform: scale(1.1);
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--dark-color);
+    color: #9CA3AF; /* Softer text color */
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.main-footer p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* --- Page Header --- */
+.page-header {
+    text-align: center;
+    padding: 60px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 50px;
+    background-color: #f4f7ee; /* Same as your featured inventions bg */
+}
+.page-header h1 {
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- CSS-Only Timeline Scroller --- */
+.timeline-section {
+    padding-bottom: 100px;
+}
+
+.timeline-scroll {
+    display: flex;
+    flex-wrap: nowrap; /* Ensures items stay in one line */
+    gap: 30px; /* The space between cards */
+    
+    overflow-x: auto; /* This creates the horizontal scrollbar */
+    
+    padding: 20px 10px; /* Padding so card shadows aren't cut off */
+
+    /* --- This is the "animation" part --- */
+    scroll-snap-type: x mandatory; /* Makes it snap to items on the X-axis */
+    scroll-padding: 10px; /* Ensures the snapped item isn't right at the edge */
+}
+
+/* --- Modern Scrollbar Styling (for Chrome/Safari) --- */
+.timeline-scroll::-webkit-scrollbar {
+    height: 10px;
+}
+.timeline-scroll::-webkit-scrollbar-track {
+    background-color: #f4f7ee; /* Light track */
+    border-radius: 10px;
+}
+.timeline-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--primary-start); /* Purple scroll handle */
+    border-radius: 10px;
+}
+.timeline-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-end); /* Pink hover */
+}
+
+
+/* --- Timeline Card --- */
+.timeline-scroll .invention-card {
+    flex: 0 0 300px; /* Don't shrink, don't grow, base width of 300px */
+    height: 400px; 
+    
+    /* --- This is the "snap" part --- */
+    scroll-snap-align: start; /* Each card will snap to the start of the container */
+}
+
+/* ---
+   UNIQUE 1990s Page Card Animation
+   (Overrides the default animation)
+--- */
+
+/* ---
+   UNIQUE 1990s Page Card Animation (with Visible Title)
+--- */
+
+/* 1. Keep the card glow and border effect */
+.timeline-scroll .invention-card:hover {
+    transform: translateY(0); /* No lift */
+    box-shadow: 0 0 25px rgba(109, 40, 217, 0.5); /* Purple glow */
+    border-color: var(--primary-end); /* Bright pink border */
+}
+
+/* 2. Style the always-visible title */
+.timeline-scroll .invention-card h3 {
+    background: linear-gradient(0deg, rgba(17,24,39,0.9) 0%, rgba(17,24,39,0.7) 100%);
+    color: #fff;
+    padding: 15px;
+    margin: 0;
+    font-size: 1.1rem;
+    
+    /* Position it at the bottom, over the image */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2; /* Sits above the image */
+    transition: all 0.4s ease;
+}
+
+/* 3. Style the hidden description box */
+.timeline-scroll .card-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; /* Sits below the title */
+    
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    
+    background: rgba(17, 24, 39, 0.9);
+    color: #fff;
+    
+    /* Hide it by default */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.timeline-scroll .card-info p {
+    font-size: larger;
+    margin: 0;
+}
+
+
+
+/* 4. On hover, fade in the description */
+.timeline-scroll .invention-card:hover .card-info {
+    opacity: 1;
+    z-index: 3; /* Bring description in front of the title */
+}
+
+
+/* 5. On hover, hide the title (since the description box replaces it) */
+.timeline-scroll .invention-card:hover h3 {
+    opacity: 0;
+}
+
+/* 6. Keep the image zoom/darken, but make it darker */
+.timeline-scroll .invention-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.4);
+}
+/* ---
+   STYLES FOR 2000s PAGE (Sticky Stack Scroll)
+--- */
+
+/* 1. New color variables for this page */
+:root {
+    --cyan-blue: #00A3E1;
+    --cyan-blue-dark: #007bb5;
+    --cyan-glow: rgba(0, 163, 225, 0.4);
+    --cyan-bg-light: #e6f6ff;
+    --cyan-bg-dark: #d1edff;
+}
+
+/* 2. Style the header with the new color */
+#header-2000s {
+    background-color: var(--cyan-bg-light); 
+    border-bottom-color: var(--cyan-bg-dark);
+}
+#header-2000s h1 {
+    color: var(--cyan-blue-dark);
+}
+#header-2000s p {
+    color: #005f8a;
+    font-size: large;
+}
+
+/* 3. The Sticky Stack */
+.sticky-container {
+    position: relative;
+    /* This empty pseudo-element helps the last panel "stick" */
+    /* by adding an invisible extra panel's height of space to scroll. */
+    /* padding-bottom: 100vh; */
+}
+
+.sticky-panel {
+    position: sticky;
+    /* This sticks the panel just below your navbar. 
+       If your navbar height changes, adjust this value. */
+    top: 90px;
+    
+    /* Each panel fills the viewport (minus the navbar) */
+    height: calc(100vh - 90px);
+    width: 100%;
+    
+    /* We must have a solid background for the "stacking" to work */
+    background-color: var(--cyan-bg-light);
+    color: #005f8a;
+    
+    /* This ensures content inside is centered */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 4. Alternating background colors for the panels */
+#panel-2, #panel-4 {
+    background-color: var(--cyan-bg-dark);
+}
+/* This last panel gets a darker BG for a sense of finality */
+#panel-5 {
+    background-color: #bbdefb;
+}
+
+/* 5. The 50/50 content layout */
+.panel-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+}
+
+.panel-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.panel-text h3 {
+    color: var(--cyan-blue-dark);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.panel-text p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+}
+
+.panel-image {
+    flex: 1;
+}
+
+.panel-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.4s ease;
+}
+
+/* 6. Simple hover animation */
+.panel-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px var(--cyan-glow);
+}
+
+/* 7. Class to reverse the layout */
+.panel-content.layout-reversed {
+    flex-direction: row-reverse;
+}
+.panel-content.layout-reversed .panel-text {
+    padding-right: 0;
+    padding-left: 20px;
+}
+
+/* ---
+   STYLES FOR 2010s PAGE (Vertical Timeline & 3D Flip)
+--- */
+
+/* 1. New color variables for this page */
+:root {
+    --aqua-blue: #17A2B8;
+    --aqua-blue-dark: #117A8B;
+    --aqua-bg-light: #e7f6f8;
+    --aqua-bg-dark: #d1eef2;
+    --aqua-text: #0d5c6a;
+}
+
+/* 2. Style the header with the new color */
+#header-2010s {
+    background-color: var(--aqua-bg-light); 
+    border-bottom-color: var(--aqua-bg-dark);
+}
+#header-2010s h1 {
+    color: var(--aqua-blue-dark);
+}
+#header-2010s p {
+    color: var(--aqua-text);
+}
+
+/* 3. The Timeline Container */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+    padding-bottom: 50px;
+}
+
+/* 4. The Central Timeline Bar */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--aqua-bg-dark);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: -1;
+}
+
+/* 5. Each Timeline Item (the box holding the card) */
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%; /* Each item takes half the width */
+}
+
+/* 6. Alignment for left and right items */
+.timeline-item.align-left {
+    left: 0;
+}
+.timeline-item.align-right {
+    left: 50%;
+}
+
+/* 7. The "Connector Dot" on the timeline */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 4px solid var(--aqua-blue);
+    border-radius: 50%;
+    top: 30px;
+    z-index: 1;
+}
+/* Position the dot for left vs right */
+.timeline-item.align-left::after {
+    right: -13px;
+}
+.timeline-item.align-right::after {
+    left: -13px;
+}
+
+/* --- 8. The 3D Flip Card Animation --- */
+
+/* The container that sets up the 3D space */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 280px;
+    perspective: 1000px; /* This is key for the 3D effect */
+    cursor: pointer;
+}
+
+/* This inner element does the actual flipping */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; /* This is key */
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius);
+}
+
+/* THIS IS THE ANIMATION: On hover, flip the inner card */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Both front and back panels */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    -webkit-backface-visibility: hidden; /* Hides the back of the panel */
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+/* Styling for the FRONT panel */
+.flip-card-front {
+    background-color: var(--aqua-blue-dark);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.flip-card-front h3 {
+    width: 100%;
+    padding: 15px;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    background: rgba(17, 122, 139, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+/* Styling for the BACK panel */
+.flip-card-back {
+    background-color: #fff;
+    color: var(--aqua-text);
+    padding: 25px;
+    transform: rotateY(180deg); /* Pre-flip the back panel */
+}
+.flip-card-back h3 {
+    color: var(--aqua-blue-dark);
+    margin-top: 0;
+}
+.flip-card-back p {
+    font-size: 1.2rem;
+    
+}
+
+
+/* ---
+   STYLES FOR 2020s PAGE (Masonry & Grayscale Animation)
+--- */
+
+/* 1. New color variables for this page */
+:root {
+    --tech-lime: #f76868;
+    --tech-lime-glow: rgba(57, 255, 20, 0.5);
+    --tech-graphite: #222222;
+    --tech-graphite-light: #333333;
+    --tech-text: #E0E0E0;
+}
+
+/* 2. Style the header with the new color */
+/* We're inverting the header theme! Dark background, light text */
+#header-2020s {
+    background-color: var(--tech-graphite); 
+    border-bottom-color: var(--tech-graphite-light);
+}
+#header-2020s h1 {
+    color: var(--tech-lime); /* Bright lime heading */
+}
+#header-2020s p {
+    color: var(--tech-text); /* Light gray text */
+}
+
+/* 3. The Masonry Container */
+/* This uses CSS columns to create the layout */
+.masonry-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 15px;
+    
+    /* This is the magic! */
+    column-count: 3; /* 3 columns on desktop */
+    column-gap: 20px;
+}
+
+/* 4. Each Masonry Item (the card) */
+.masonry-item {
+    display: inline-block; /* Required for columns */
+    width: 100%;
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 20px; /* This is the vertical gap */
+    
+    /* --- This is the animation setup --- */
+    transition: all 0.4s ease-in-out;
+    border: 3px solid transparent;
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    /* --- Start grayscale --- */
+    filter: grayscale(100%); 
+    transition: all 0.4s ease-in-out;
+}
+
+.masonry-content {
+    padding: 20px;
+}
+.masonry-content h3 {
+    color: var(--dark-color);
+    margin-top: 0;
+    transition: color 0.4s ease;
+}
+.masonry-content p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+/* --- 5. The Hover Animation --- */
+.masonry-item:hover {
+    transform: scale(1.03); /* Slight zoom */
+    border-color: var(--tech-lime);
+    box-shadow: 0 0 30px var(--tech-lime-glow);
+}
+
+.masonry-item:hover img {
+    filter: grayscale(0%); /* --- Become full color --- */
+}
+
+.masonry-item:hover h3 {
+    color: var(--tech-lime); /* Change title to lime */
+}
+
+
+/* ---
+   STYLES FOR About / Contact PAGE
+--- */
+
+/* 1. Style the header */
+#header-about {
+    background-color: #f4f7ee; /* A light, neutral background */
+    border-bottom-color: #e0e0e0;
+}
+#header-about h1 {
+    color: var(--dark-color);
+}
+#header-about p {
+    color: var(--text-color);
+}
+
+/* 2. Container for the content */
+.about-contact-container {
+    max-width: 800px; /* A good width for reading text */
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.about-section,
+.contact-section {
+    margin-bottom: 60px;
+}
+
+.about-contact-container h2 {
+    color: var(--primary-start); /* Use the purple theme color */
+    border-bottom: 3px solid var(--primary-end);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.about-contact-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* 3. The Contact Form */
+.contact-form {
+    display: grid;
+    grid-gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Important! */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-start);
+    box-shadow: 0 0 8px rgba(109, 40, 217, 0.3);
+}
+
+/* We can reuse the btn-primary from the hero section! */
+.contact-form .btn-primary {
+    justify-self: start; /* Don't stretch the button */
+    cursor: pointer;
+}
